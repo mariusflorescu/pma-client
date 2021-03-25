@@ -1,10 +1,9 @@
-import Routes from './Routes'
-
+import Routes from "./Routes";
+import React from "react";
 
 function App() {
-  return (
-    <Routes/>
-  );
+  const [user, setUser] = React.useState(undefined);
+  return <Routes user={user} setUser={setUser} />;
 }
 
 export default App;
