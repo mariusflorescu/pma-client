@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 
 import useRouter from "../utils/useRouter";
@@ -10,10 +11,6 @@ const Login = () => {
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
-
-  const goToRegisterPage = () => {
-    router.push("/register");
-  };
 
   const handleLoginFormSubmit = async (e) => {
     e.preventDefault();
@@ -74,7 +71,7 @@ const Login = () => {
             <button
               type="submit"
               disabled={!username || !password}
-              className="flex items-center justify-center px-3 py-2 mx-12 mt-2 space-x-2 text-white transition duration-200 transform bg-green-500 rounded-full hover:scale-105 hover:bg-green-400"
+              className="flex items-center justify-center px-3 py-2 mx-12 mt-2 space-x-2 text-white transition duration-200 transform bg-green-500 rounded-full hover:scale-105 hover:bg-green-400 focus:outline-none"
             >
               <span className="font-semibold">Login</span>
               <svg
@@ -96,12 +93,12 @@ const Login = () => {
           {/* new to pma */}
           <span className="flex justify-end w-full px-3 pt-12">
             Not a PMA user? Click{" "}
-            <a
-              className="px-1 text-green-600 hover:cursor-pointer cursor-pointer hover:text-green-500"
-              onClick={goToRegisterPage}
+            <Link
+              to="/register"
+              className="px-1 text-green-600 hover:cursor-pointer hover:text-green-500"
             >
               here
-            </a>{" "}
+            </Link>
             to register
           </span>
         </div>
