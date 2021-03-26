@@ -1,6 +1,5 @@
 import React from "react";
 import useRouter from "../utils/useRouter";
-import "./../css/Home.css";
 
 const Home = () => {
   const router = useRouter();
@@ -13,7 +12,7 @@ const Home = () => {
   };
 
   return (
-    <div className="home_container">
+    <div className="flex flex-col">
       <h1>Hello from home page!</h1>
       <button onClick={goToLoginPage}>Login</button>
       <button onClick={goToRegisterPage}>Register</button>
