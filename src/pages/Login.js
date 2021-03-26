@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom'
 import axios from 'axios'
 
 import useRouter from "../utils/useRouter";
@@ -77,7 +78,7 @@ const Login = () => {
               <button 
               type="submit"
               disabled={!username || !password}
-              className="flex items-center justify-center px-3 py-2 mx-12 mt-2 space-x-2 text-white transition duration-200 transform bg-green-500 rounded-full hover:scale-105 hover:bg-green-400">
+              className="flex items-center justify-center px-3 py-2 mx-12 mt-2 space-x-2 text-white transition duration-200 transform bg-green-500 rounded-full hover:scale-105 hover:bg-green-400 focus:outline-none">
                 <span className="font-semibold">Login</span>
                 <svg className="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
@@ -86,7 +87,7 @@ const Login = () => {
               
             </form>
             {/* new to pma */}
-            <span className="flex justify-end w-full px-3 pt-12">Not a PMA user? Click <a className="px-1 text-green-600 hover:cursor-pointer hover:text-green-500">here</a> to register</span>   
+            <span className="flex justify-end w-full px-3 pt-12">Not a PMA user? Click <Link to="/register"><a className="px-1 text-green-600 hover:cursor-pointer hover:text-green-500">here</a></Link> to register</span>   
            
            </div>
             {/* Image */}
