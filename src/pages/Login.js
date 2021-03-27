@@ -52,7 +52,7 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="px-3 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400"
-              placeholder="Username..."
+              placeholder="Username"
             />
 
             <input
@@ -60,7 +60,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="px-3 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400"
-              placeholder="Password..."
+              placeholder="Password"
             />
             {errors.password && (
               <small className="text-xs text-red-500">
