@@ -12,7 +12,7 @@ const Success = () => {
     },1000);
 
     if(timer === 0){
-      router.push('/');
+      router.push('/login');
     }
   })
 
