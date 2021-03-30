@@ -45,6 +45,7 @@ const Login = () => {
           {/* Form */}
           <form
             className="grid gap-6 px-20 grid-rows-auto"
+            data-testid="login-form"
             onSubmit={handleLoginFormSubmit}
           >
             <input
@@ -52,7 +53,7 @@ const Login = () => {
               value={username}
               onChange={(e) => setUsername(e.target.value)}
               className="px-3 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400"
-              placeholder="Username"
+              placeholder="Username..."
             />
 
             <input
@@ -60,7 +61,7 @@ const Login = () => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               className="px-3 py-2 text-gray-600 border border-gray-300 rounded focus:outline-none focus:ring-1 focus:ring-green-400"
-              placeholder="Password"
+              placeholder="Password..."
             />
             {errors.password && (
               <small className="text-xs text-red-500">
@@ -70,6 +71,7 @@ const Login = () => {
 
             <button
               type="submit"
+              data-testid="login-button"
               disabled={!username || !password}
               className="flex items-center justify-center px-3 py-2 mx-12 mt-2 space-x-2 text-white transition duration-200 transform bg-green-500 rounded-full hover:scale-105 hover:bg-green-400 focus:outline-none"
             >
