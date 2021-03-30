@@ -1,9 +1,13 @@
 import Routes from "./Routes";
 import React from "react";
+import {AuthProvider} from './utils/authContext'
 
 function App() {
-  const [user, setUser] = React.useState(undefined);
-  return <Routes user={user} setUser={setUser} />;
+  return (
+    <AuthProvider>
+      <Routes/>
+    </AuthProvider>
+  );
 }
 
 export default App;

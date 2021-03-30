@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import useRouter from "../utils/useRouter";
+import {useAuthDispatch} from '../utils/authContext'
 
 import loginimg from "../assets/login.jpg";
 
 const Login = () => {
   const router = useRouter();
+  const dispatch = useAuthDispatch();
+
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
@@ -16,7 +19,8 @@ const Login = () => {
     e.preventDefault();
     if (username && password) {
       try {
-        await axios.post("/login", { username, password });
+        const res = await axios.post("/login", { username, password });
+        dispatch({type:"LOGIN",payload:res.data})
         router.push("/");
       } catch (err) {
         setErrors(err.response.data);
