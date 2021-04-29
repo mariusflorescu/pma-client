@@ -2,24 +2,24 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Register from "./pages/Register";
 import Login from "./pages/Login";
-import Home from "./pages/Home";
+import IndexPage from "./pages/IndexPage";
 import Content from "./pages/Content";
 
-const Routes = ({ user, setUser }) => {
+const Routes = () => {
   return (
     <Router>
       <Switch>
         <Route exact path="/content">
-          <Content user={user} />
+          <Content />
         </Route>
         <Route exact path="/register">
-          <Register user={user} setUser={setUser} />
+          <Register/>
         </Route>
         <Route exact path="/login">
-          <Login user={user} setUser={setUser} />
+          <Login/>
         </Route>
         <Route path="/">
-          <Home user={user} />
+          <IndexPage/>
         </Route>
       </Switch>
     </Router>

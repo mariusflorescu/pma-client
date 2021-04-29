@@ -1,8 +1,10 @@
 import React from "react";
 import useRouter from "../utils/useRouter";
+import { useAuthState } from "../utils/authContext";
 
-const Home = () => {
+const IndexPage = () => {
   const router = useRouter();
+  const {auth} = useAuthState();
 
   const goToLoginPage = () => {
     router.push("/login");
@@ -10,6 +12,12 @@ const Home = () => {
   const goToRegisterPage = () => {
     router.push("/register");
   };
+
+  React.useEffect(() => {
+    if(auth === true){
+      router.push('/content');
+    }
+  },[router,auth]);
 
   return (
     <div className="relative w-full h-screen">
@@ -58,4 +66,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default IndexPage;
