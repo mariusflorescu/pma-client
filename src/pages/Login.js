@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 
 import useRouter from "../utils/useRouter";
-import {useAuthDispatch} from '../utils/authContext'
+import {useAuthDispatch,useAuthState} from '../utils/authContext'
 
 import loginimg from "../assets/login.jpg";
 
 const Login = () => {
+  const {auth} = useAuthState()
   const router = useRouter();
   const dispatch = useAuthDispatch();
 
@@ -29,6 +30,10 @@ const Login = () => {
       alert("Please fill the form!");
     }
   };
+
+  React.useEffect(() => {
+    if(auth === true) router.push('/');
+  },[auth,router]);
 
   return (
     <div className="flex items-center justify-center w-full h-screen bg-gray-100">
@@ -109,7 +114,7 @@ const Login = () => {
           </span>
         </div>
         {/* Image */}
-        <img src={loginimg} className="max-w-md rounded-r" />
+        <img alt="" src={loginimg} className="max-w-md rounded-r" />
       </div>
     </div>
   );
