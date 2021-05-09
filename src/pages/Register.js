@@ -3,11 +3,16 @@ import { Link } from "react-router-dom"
 import axios from 'axios'
 import classNames from 'classnames'
 
+import useRouter from '../utils/useRouter';
+
 import Success from '../components/Success'
 
 import loginimg from "../assets/login.jpg";
+import {useAuthState} from "../utils/authContext";
 
 const Register = () => {
+  const {auth} = useAuthState();
+  const router = useRouter();
   //
   const [step,setStep] = React.useState(1);
   const [accType,setAccType] = React.useState("");
@@ -81,12 +86,16 @@ const Register = () => {
     }
   }
 
+  React.useEffect(() => {
+    if(auth === true) router.push('/');
+  },[auth,router]);
+
   return (
     <div className="flex items-center justify-center w-full h-screen bg-gray-100">
       {/* BOX */}
       <div className="grid grid-cols-2 bg-white border border-gray-300 rounded">
         {/* Image */}
-        <img src={loginimg} className="max-w-md rounded-l" />
+        <img alt="" src={loginimg} className="max-w-md rounded-l" />
         <div className="py-6">
           {/* Title */}
           <h1 className="text-3xl font-bold text-center text-gray-800">PMA</h1>
