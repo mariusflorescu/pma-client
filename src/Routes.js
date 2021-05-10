@@ -47,10 +47,7 @@ const IsNotUserMarkup = () => {
         <Switch>
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
-            v
-            <Route exact path="/projects/all" component={ViewProjects}/>
-            <Route exact path="/project/create" component={AddProject}/>
-            <Route exact path="/" component={IndexPage}/>
+            <Route exact path="/:not" component={Login}/>
         </Switch>
       </Router>
   )

@@ -11,6 +11,8 @@ function ViewProject(){
     const [errors,setErrors] = React.useState("");
 
     React.useEffect(() => {
+        if(!user) router.push('/');
+
         if(user && user.type){
             if(user.type !== "STUDENT") router.push('/')
         }
