@@ -40,7 +40,8 @@ export const AuthProvider = ({ children }) => {
 			.then((res) => {
 				dispatch({ type: "LOGIN", payload: res.data });
 			})
-			.catch(() => {
+			.catch((err) => {
+				console.log(err);
 			});
 	}, []);
 
