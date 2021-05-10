@@ -4,6 +4,22 @@
 #### Description 📝:
 This is the client of the Project Management App for Software Engineering Fundamentals Laboratory.
 
+##### Technology Stack 👾:
+#### Frontend:
+- React ❤️
+- TailwindCSS (utility-first CSS)
+- Jest/React-Testing Library (testing)
+- React Context API (state-management)
+- Axios (HTTP requests)
+
+#### Backend:
+- Nodejs + TypeScript
+- Express
+- TypeORM
+- Postgres (database)
+- JWT Tokens (user auth)  
+- Jest
+
 #### Team members 👨‍🔧:
 - Marius-Adrian Florescu
 - Victor-Alexandru Cerna
