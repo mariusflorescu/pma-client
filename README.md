@@ -17,7 +17,11 @@ This is the client of the Project Management App for Software Engineering Fundam
 #### Available feautures ⚡️:
 - Register (2 step form), where you can either register as a Student or Company
 - Login, regardless of the account type you have.
+- Logout  
 - Basic homepage (will change it later).
+- As a company user, you can now create new projects.
+- As student, you can view the list of the projects (regardless of the status open/closed)
+- As student, you can now apply to projects that have open status.
 
 #### UML Case Diagram:
 - [Click here](https://lucid.app/lucidchart/invitations/accept/4d821252-69c9-4bee-8bfa-3a42326eedf4)
