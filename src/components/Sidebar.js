@@ -1,34 +1,26 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useAuthState, useAuthDispatch } from "../utils/authContext";
+import { useAuthState } from "../utils/authContext";
 import useRouter from "../utils/useRouter";
-import axios from "axios";
 
 const Sidebar = () => {
   const router = useRouter();
-  const { user } = useAuthState();
-  const dispatch = useAuthDispatch();
+  const { auth, user} = useAuthState();
   const [namePic, setNamePic] = React.useState("");
   const [errors, setErrors] = React.useState({});
 
   React.useEffect(() => {
+    if(!user){
+      setNamePic("");
+    }
+
     if (user && user.type === "STUDENT" && user.data) {
       setNamePic(user.data.firstname[0] + user.data.lastname[0]);
     }
   }, [user]);
 
   const handleLogout = () => {
-    axios
-      .get("/logout")
-      .then((res) => {
-        if (res.status === 200) {
-          dispatch({ type: "LOGOUT" });
-          router.push("/login");
-        }
-      })
-      .catch((err) => {
-        setErrors(err.response);
-      });
+    router.push('/logout');
   };
 
   return (
@@ -41,14 +33,14 @@ const Sidebar = () => {
           </span>
           <div className="flex flex-col">
             <span className="font-semibold text-gray-600">
-              {user &&
-                user.data &&
-                (user.type === "STUDENT"
-                  ? user.data.firstname + " " + user.data.lastname
-                  : user.data.name)}
+              {
+               user && user.data && (
+                    user.type === 'STUDENT' ? (user.data.firstname + " " + user.data.lastname) : (user.data.name)
+                )
+              }
             </span>
             <small className="text-gray-500">
-              {user && user.type === "STUDENT" ? "Student" : "Company"}
+              {user && (user.type === "STUDENT" ? "Student" : "Company")}
             </small>
           </div>
         </div>
