@@ -1,0 +1,5 @@
+textarea::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgba(107, 114, 128, var(--tw-placeholder-opacity));
+  text-align: center;
+}
