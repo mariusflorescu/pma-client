@@ -11,7 +11,7 @@ const Logout = () => {
         axios.get('/logout')
             .then(() => {
                 dispatch({ type: "LOGOUT" });
-                router.push('/login')
+                router.push('/login');
             })
             .catch((err) => console.log(err));
     },[router]);

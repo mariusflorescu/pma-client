@@ -25,18 +25,25 @@ const Content = () => {
     const {user} = useAuthState();
     const router = useRouter();
 
+    const [markup,setMarkup] = React.useState("");
+
+    React.useEffect(() => {
+        console.log(user);
+    },[user]);
+
     React.useEffect(() => {
         if(!user) router.push('/login');
     })
 
+    React.useEffect(() => {
+        if(user && user.type === 'STUDENT') setMarkup("STUDENT");
+        else if(user && user.type === 'COMPANY') setMarkup("COMPANY");
+    },[user])
 
     return (
         <React.Fragment>
-            {user && user.type === 'STUDENT' ? (
-                <StudentMarkup/>
-            ) : (
-                <CompanyMarkup/>
-            )}
+            {markup === 'STUDENT' && <StudentMarkup/>}
+            {markup === 'COMPANY' && <CompanyMarkup/>}
         </React.Fragment>
     );
 }

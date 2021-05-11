@@ -16,13 +16,19 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const [errors, setErrors] = React.useState({});
 
-  const handleLoginFormSubmit = (e) => {
+  const handleLoginFormSubmit = async (e) => {
     e.preventDefault();
     if (username && password) {
       try {
         axios.post("/login", { username, password })
             .then((res) => {
-              dispatch({type:"LOGIN",payload:res.data})
+              let pl={
+                type:"",
+                data:res.data
+              };
+              if(res.data.firstname) pl.type="STUDENT";
+              else pl.type="COMPANY";
+              dispatch({type:"LOGIN",payload:pl});
               router.push("/");
             })
             .catch((err) => console.log(err));
