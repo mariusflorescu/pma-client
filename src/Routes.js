@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
+import Logout from './pages/Logout'
 import IndexPage from "./pages/IndexPage";
 import {useAuthState} from "./utils/authContext";
 import Sidebar from "./components/Sidebar";
@@ -25,6 +26,7 @@ const IsUserMarkup = () => {
 
                 <Route exact path="/register" component={Register}/>
                 <Route exact path="/login" component={Login}/>
+                <Route exact path="/logout" component={Logout}/>
                 <Route exact path="/content" component={Content}/>
                 <Route exact path="/projects/all" component={ViewProjects}/>
                 <Route exact path="/project/create" component={AddProject}/>
@@ -48,6 +50,7 @@ const IsNotUserMarkup = () => {
             <Route exact path="/register" component={Register}/>
             <Route exact path="/login" component={Login}/>
             <Route exact path="/:not" component={Login}/>
+            <Route exact path="/" component={IndexPage}/>
         </Switch>
       </Router>
   )

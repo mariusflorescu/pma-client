@@ -23,10 +23,10 @@ const UserProfile = () => {
           <>
             <div className="flex justify-center pt-6 space-x-1">
               <span className="font-medium text-gray-600">
-                {user.data.firstname}
+                {(user && user.data )? user.data.firstname : ("")}
               </span>
               <span className="font-medium text-gray-600">
-                {user.data.lastname}
+                {(user && user.data )? user.data.lastname : ("")}
               </span>
             </div>
             <div className="flex justify-center">
@@ -34,7 +34,7 @@ const UserProfile = () => {
             </div>
             <div className="flex justify-center">
               <span className="text-xs font-medium text-gray-600">
-                {user.data.github_username}
+                {(user && user.data )? user.data.github_username : ("")}
               </span>
             </div>
             <div className="flex-col justify-center pt-4">
@@ -51,12 +51,12 @@ const UserProfile = () => {
           <>
             <div className="flex justify-center pt-8">
               <span className="font-semibold text-gray-600">
-                {user.data.name}
+                {(user && user.data )? user.data.name : ("")}
               </span>
             </div>
             <div className="flex justify-center">
               <span className="font-normal text-gray-600">
-                {user.data.website}
+                {(user && user.data )? user.data.website : ("")}
               </span>
             </div>
             <div className="flex-col justify-center pt-4">
@@ -65,7 +65,7 @@ const UserProfile = () => {
               </label>
               <textarea
                 placeholder="Add description here..."
-                className="rounded-lg mt-2 pl-2 pt-1 pb-1 pr-2 w-full h-20 text-gray-600 bg-gray-50 border-2 border-gray-400 border-opacity-25 focus:outline-none"
+                className="rounded-lg mt-2 mx-2 pl-2 pt-1 pb-1 pr-2 w-full h-20 text-gray-600 bg-gray-50 border-2 border-gray-400 border-opacity-25 focus:outline-none"
               />
             </div>
           </>
