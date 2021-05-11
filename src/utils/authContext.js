@@ -25,7 +25,7 @@ const reducer = (state, { type, payload }) => {
 			};
 
 		default:
-			throw new Error(`Unkown type action of ${type}`);
+			throw new Error(`Unknown type action of ${type}`);
 	}
 };
 

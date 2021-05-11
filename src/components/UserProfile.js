@@ -6,8 +6,16 @@ const UserProfile = () => {
   const [namePic, setNamePic] = React.useState("");
 
   React.useEffect(() => {
-    if (user && user.type === "STUDENT" && user.data) {
-      setNamePic(user.data.firstname[0] + user.data.lastname[0]);
+    if(!user){
+      setNamePic("");
+    }
+
+    if (user && user.data) {
+      if(user.type==='STUDENT'){
+        setNamePic((user.data.firstname[0] + user.data.lastname[0]).toUpperCase());
+      } else {
+        setNamePic((user.data.name[0]+user.data.name[1]).toUpperCase());
+      }
     }
   }, [user]);
 
