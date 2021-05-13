@@ -25,6 +25,7 @@ function ViewCompanyProjects() {
         const res = await axios.get("/projects/");
 
         if (res && res.data) {
+          console.log(res.data);
           setProjects(res.data);
         }
       } catch (e) {
@@ -34,19 +35,6 @@ function ViewCompanyProjects() {
 
     fetchProjects().then(() => console.log("Company projects"));
   }, []);
-
-  const handleApplyToProject = (id) => {
-    console.log(id);
-    axios
-      .get(`/projects/${id}/apply`)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data.error);
-        setErrors(err.response.data.error);
-      });
-  };
 
   return (
     <div className="flex flex-col">
@@ -74,9 +62,10 @@ function ViewCompanyProjects() {
                   >
                     applicants
                   </th>
-                  {/* <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
-                  </th> */}
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  ></th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -98,18 +87,24 @@ function ViewCompanyProjects() {
                           </span>
                         )}
                       </td>
-                      {project.status === "open" && (
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <button
-                            // onClick={project}
-                            className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer"
-                          >
+
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          // onClick={project}
+                          className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer"
+                        >
+                          {project.status === "open" && (
                             <Link to={`/projects/${project.id}/applicants`}>
                               View
                             </Link>
-                          </button>
-                        </td>
-                      )}
+                          )}
+                        </button>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer">
+                          <Link to={`/project/info/${project.id}`}>EDIT</Link>
+                        </button>
+                      </td>
                     </tr>
                   ))}
               </tbody>

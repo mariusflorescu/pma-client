@@ -12,6 +12,7 @@ import AddProject from "./pages/AddProject";
 import Content from "./pages/Content";
 import ViewApplicants from "./pages/ViewApplicants";
 import ViewCompanyProjects from "./pages/ViewCompanyProjects";
+import ProjectEdit from "./pages/ProjectEdit";
 
 const IsUserMarkup = () => {
   return (
@@ -37,6 +38,8 @@ const IsUserMarkup = () => {
                 path="/projects/:id/applicants"
                 component={ViewApplicants}
               />
+
+              <Route exact path="/project/info/:id" component={ProjectEdit} />
             </div>
 
             {/* RIGHT INFO */}
