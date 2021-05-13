@@ -1,29 +1,31 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import { useAuthState } from "../utils/authContext";
 import useRouter from "../utils/useRouter";
 
-function ViewProject() {
+function ViewCompanyProjects() {
   const router = useRouter();
   const { user } = useAuthState();
 
-  const [projects, setProjects] = React.useState({});
+  const [projects, setProjects] = React.useState([]);
   const [errors, setErrors] = React.useState("");
 
   React.useEffect(() => {
     if (!user) router.push("/");
 
     if (user && user.type) {
-      if (user.type !== "STUDENT") router.push("/");
+      if (user.type !== "COMPANY") router.push("/");
     }
   }, [user, router]);
 
   React.useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const res = await axios.get("/projects/all");
+        const res = await axios.get("/projects/");
 
         if (res && res.data) {
+          console.log(res.data);
           setProjects(res.data);
         }
       } catch (e) {
@@ -31,21 +33,8 @@ function ViewProject() {
       }
     };
 
-    fetchProjects().then(() => console.log("Projects get"));
+    fetchProjects().then(() => console.log("Company projects"));
   }, []);
-
-  const handleApplyToProject = (id) => {
-    console.log(id);
-    axios
-      .get(`/projects/${id}/apply`)
-      .then((res) => {
-        console.log(res.data);
-      })
-      .catch((err) => {
-        console.log(err.response.data.error);
-        setErrors(err.response.data.error);
-      });
-  };
 
   return (
     <div className="flex flex-col">
@@ -59,23 +48,24 @@ function ViewProject() {
                     scope="col"
                     className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
-                    Company
-                  </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  >
                     Project name
                   </th>
                   <th
                     scope="col"
-                    className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+                    className="px-6 py-3 text-center text-xs font-medium text-gray-500 uppercase tracking-wider"
                   >
                     Status
                   </th>
-                  <th scope="col" className="relative px-6 py-3">
-                    <span className="sr-only">Edit</span>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  >
+                    applicants
                   </th>
+                  <th
+                    scope="col"
+                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
+                  ></th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -83,24 +73,10 @@ function ViewProject() {
                   projects.length &&
                   projects.map((project) => (
                     <tr key={project.id}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <div className="flex items-center">
-                          <div className="flex-shrink-0 h-10 w-10">
-                            <img
-                              className="h-10 w-10 rounded-full"
-                              src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=4&w=256&h=256&q=60"
-                              alt=""
-                            />
-                          </div>
-                          <div className="ml-4 font-medium text-sm">
-                            {project.username}
-                          </div>
-                        </div>
-                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-gray-600 text-sm">
                         {project.name}
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
+                      <td className="px-6 py-4 text-center whitespace-nowrap">
                         {project.status === "open" ? (
                           <span className="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800">
                             Open
@@ -111,19 +87,24 @@ function ViewProject() {
                           </span>
                         )}
                       </td>
-                      {project.status === "open" && (
-                        <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                          <a
-                            className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer"
-                            onClick={(e) => {
-                              e.preventDefault();
-                              handleApplyToProject(project.id);
-                            }}
-                          >
-                            APPLY
-                          </a>
-                        </td>
-                      )}
+
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          // onClick={project}
+                          className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer"
+                        >
+                          {project.status === "open" && (
+                            <Link to={`/projects/${project.id}/applicants`}>
+                              View
+                            </Link>
+                          )}
+                        </button>
+                      </td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer">
+                          <Link to={`/project/info/${project.id}`}>EDIT</Link>
+                        </button>
+                      </td>
                     </tr>
                   ))}
               </tbody>
@@ -135,4 +116,4 @@ function ViewProject() {
   );
 }
 
-export default ViewProject;
+export default ViewCompanyProjects;
