@@ -27,7 +27,6 @@ const mockHistory = {
   go: () => {},
   goBack: () => {},
   goForward: () => {},
-  go: () => {},
   length: 2,
   listen: () => {},
   location: mockLocation,
