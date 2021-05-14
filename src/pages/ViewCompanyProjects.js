@@ -36,16 +36,6 @@ function ViewCompanyProjects() {
     fetchProjects().then(() => console.log("Company projects"));
   }, []);
 
-  const handleDeleteProject = async (id) => {
-    try {
-      await axios.delete(`/projects/${id}/delete`);
-      setProjects((prevProjects) =>
-        prevProjects.filter((project) => project.id !== id)
-      );
-    } catch (e) {
-      setErrors(e.response.data);
-    }
-  };
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -72,10 +62,6 @@ function ViewCompanyProjects() {
                   >
                     applicants
                   </th>
-                  <th
-                    scope="col"
-                    className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  ></th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -117,14 +103,6 @@ function ViewCompanyProjects() {
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                         <button className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer">
                           <Link to={`/project/info/${project.id}`}>EDIT</Link>
-                        </button>
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                        <button
-                          className="transition duration-100 text-green-600 hover:text-green-900 cursor-pointer"
-                          onClick={() => handleDeleteProject(project.id)}
-                        >
-                          DEL
                         </button>
                       </td>
                     </tr>
