@@ -75,7 +75,9 @@ function ViewCompanyProjects() {
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  ></th>
+                  >
+                    Tasks
+                  </th>
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
@@ -116,10 +118,34 @@ function ViewCompanyProjects() {
                           )}
                         </button>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium"></td>
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                        <button
+                          // onClick={project}
+                          className="transition duration-100 text-gray-600 hover:text-green-900 cursor-pointer"
+                        >
+                          {project.status === "open" && (
+                            <Link to={`/project/${project.id}/tasks`}>
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="h-6 w-6"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                              >
+                                <path
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"
+                                  stroke-width="2"
+                                  d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2"
+                                />
+                              </svg>
+                            </Link>
+                          )}
+                        </button>
+                      </td>
                       <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-1">
                         <button className="transition duration-100 text-gray-600 hover:text-green-900 cursor-pointer">
-                          <Link to={`/project/info/${project.id}`}>
+                          <Link to={`/project/info/${project.id}/edit`}>
                             <svg
                               xmlns="http://www.w3.org/2000/svg"
                               class="h-6 w-6"
