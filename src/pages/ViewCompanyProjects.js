@@ -79,7 +79,9 @@ function ViewCompanyProjects() {
                   <th
                     scope="col"
                     className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider"
-                  ></th>
+                  >
+                    actions
+                  </th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -135,12 +137,12 @@ function ViewCompanyProjects() {
                           </Link>
                         </button>
                         <button
-                          className="transition duration-100 text-gr-600 hover:text-green-900 cursor-pointer"
+                          className="transition duration-100 text-gray-600 cursor-pointer"
                           onClick={() => handleDeleteProject(project.id)}
                         >
                           <svg
                             xmlns="http://www.w3.org/2000/svg"
-                            class="h-6 w-6"
+                            className="h-6 w-6"
                             fill="none"
                             viewBox="0 0 24 24"
                             stroke="currentColor"

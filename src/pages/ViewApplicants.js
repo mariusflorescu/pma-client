@@ -81,8 +81,9 @@ function ViewApplicants() {
                         </td>
 
                         <td className="px-6 py-4 whitespace-nowrap text-center text-sm font-medium">
-                          <div className="ml-4 font-medium text-sm ">
+                          <div className="ml-4 font-medium text-sm text-gray-400 ">
                             <button
+                              className="text-green-600"
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleApplicationStatus(
@@ -95,6 +96,7 @@ function ViewApplicants() {
                             </button>{" "}
                             /{" "}
                             <button
+                              className="text-red-600"
                               onClick={(e) => {
                                 e.preventDefault();
                                 handleApplicationStatus(
