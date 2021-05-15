@@ -160,7 +160,7 @@ const Sidebar = () => {
                   </li>
                 </Link>
 
-                <Link to="/tasks">
+                <Link to="/task/create">
                   <li className="flex items-center px-2 py-1 space-x-2 transition duration-200 border border-transparent rounded-lg hover:bg-white hover:text-green-700">
                     <svg
                       className="w-6 h-6"

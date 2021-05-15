@@ -14,6 +14,7 @@ import ViewApplicants from "./pages/ViewApplicants";
 import ViewCompanyProjects from "./pages/ViewCompanyProjects";
 import ProjectEdit from "./pages/ProjectEdit";
 import ViewTasks from "./pages/ViewTasks";
+import AddTask from "./pages/AddTask";
 
 const IsUserMarkup = () => {
   return (
@@ -46,6 +47,7 @@ const IsUserMarkup = () => {
                 component={ProjectEdit}
               />
               <Route exact path="/project/:id/tasks" component={ViewTasks} />
+              <Route exact path="/task/create" component={AddTask} />
             </div>
 
             {/* RIGHT INFO */}
