@@ -20,7 +20,7 @@ export default function CustomMenu({
         <>
           <div>
             <Menu.Button
-              className={`${labelColor} inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-indigo-500`}
+              className={`${labelColor} inline-flex justify-center w-full rounded-md border border-gray-300 shadow-sm px-4 py-2 bg-white text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-100 focus:ring-green-500`}
             >
               {title}
             </Menu.Button>
@@ -38,7 +38,7 @@ export default function CustomMenu({
           >
             <Menu.Items
               static
-              className="origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 focus:outline-none  z-10"
+              className="cursor-pointer origin-top-right absolute right-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 focus:outline-none focus:ring-offset-gray-100 focus:ring-green-500 ring-opacity-5 z-10"
             >
               <div className="py-1">
                 {data.map((el) => {

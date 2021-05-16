@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import useRouter from "../utils/useRouter";
 import Menu from "./../components/Menu";
+
 function AddTask() {
+  const router = useRouter();
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [projects, setProjects] = useState([]);
@@ -35,6 +38,7 @@ function AddTask() {
         setDescription("");
         setSelectedProject();
         setSelectedStudent();
+        router.push(`/project/${selectedProject.id}/tasks`)
       });
   };
 

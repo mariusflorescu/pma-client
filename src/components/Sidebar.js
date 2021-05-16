@@ -31,7 +31,7 @@ const Sidebar = () => {
 
   return (
     <div className="flex-shrink-0 w-64 py-1 pl-1">
-      <div className="p-2 bg-gray-50 rounded-l-xl">
+      <div className="p-2 bg-gray-50 rounded-l-xl h-full">
         {/* USER INFO */}
         <div className="flex pt-4 pl-4 space-x-2">
           <span className="w-12 h-12 bg-green-400 rounded-full flex items-center justify-center font-bold text-white">
