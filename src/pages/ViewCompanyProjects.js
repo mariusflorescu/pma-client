@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useAuthState } from "../utils/authContext";
 import useRouter from "../utils/useRouter";
 
+import DeleteDialog from "../components/DeleteDialog";
+
 function ViewCompanyProjects() {
   const router = useRouter();
   const { user } = useAuthState();
@@ -143,7 +145,7 @@ function ViewCompanyProjects() {
                           )}
                         </button>
                       </td>
-                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-1">
+                      <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium space-x-1 flex items-center justify-center gap-2">
                         <button className="transition duration-100 text-gray-600 hover:text-green-900 cursor-pointer">
                           <Link to={`/project/info/${project.id}/edit`}>
                             <svg
@@ -162,25 +164,7 @@ function ViewCompanyProjects() {
                             </svg>
                           </Link>
                         </button>
-                        <button
-                          className="transition duration-100 text-gray-600 cursor-pointer"
-                          onClick={() => handleDeleteProject(project.id)}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-6 w-6"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
-                            />
-                          </svg>
-                        </button>
+                        <DeleteDialog onPress={() => handleDeleteProject(project.id)}/>
                       </td>
                     </tr>
                   ))}
