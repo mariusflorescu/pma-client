@@ -6,9 +6,9 @@ import useRouter from "../utils/useRouter";
 const CompanyMarkup = () => {
   return (
     <div>
-      <div class="grid grid-cols-1">
-        <div class="relative z-10 col-start-1 row-start-3 text-center px-4 pt-48 pb-1">
-          <h2 class="font-semibold  text-2xl leading-7 text-white md:text-3xl">
+      <div className="grid grid-cols-1">
+        <div className="relative z-10 col-start-1 row-start-3 text-center px-4 pt-48 pb-1">
+          <h2 className="font-semibold  text-2xl leading-7 text-white md:text-3xl">
             Welcome to PMA
           </h2>
           <Link to="/project/create">
@@ -17,14 +17,14 @@ const CompanyMarkup = () => {
             </button>
           </Link>
         </div>
-        <div class="col-start-1 row-start-2 px-4 pb-20"></div>
-        <div class="flex justify-center row-start-1 flex col-start-1 row-span-3">
-          <div class="w-full h-full grid grid-cols-2 grid-rows-1 gap-2">
-            <div class="relative col-span-2 ">
+        <div className="col-start-1 row-start-2 px-4 pb-20"></div>
+        <div className="flex justify-center row-start-1 flex col-start-1 row-span-3">
+          <div className="w-full h-full grid grid-cols-2 grid-rows-1 gap-2">
+            <div className="relative col-span-2 ">
               <img
                 src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
                 alt=""
-                class="absolute w-full h-full object-cover bg-gray-100 sm:rounded-lg"
+                className="absolute w-full h-full object-cover bg-gray-100 sm:rounded-lg"
               />
             </div>
           </div>
